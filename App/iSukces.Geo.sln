@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSukces.Geo", "iSukces.Geo\iSukces.Geo.csproj", "{0C5A30ED-D01C-4DF4-8653-E3FE825FB689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSukces.Geo.Autocode", "iSukces.Geo.Autocode\iSukces.Geo.Autocode.csproj", "{5918E5DD-E6F1-43B7-8C83-CA122184107C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C5A30ED-D01C-4DF4-8653-E3FE825FB689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C5A30ED-D01C-4DF4-8653-E3FE825FB689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C5A30ED-D01C-4DF4-8653-E3FE825FB689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C5A30ED-D01C-4DF4-8653-E3FE825FB689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5918E5DD-E6F1-43B7-8C83-CA122184107C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5918E5DD-E6F1-43B7-8C83-CA122184107C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5918E5DD-E6F1-43B7-8C83-CA122184107C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5918E5DD-E6F1-43B7-8C83-CA122184107C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

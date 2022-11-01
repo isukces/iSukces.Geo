@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Title>Geo information</Title>
+    <Description>Dane z rozporządzenia ministra administracji i cyfryzacji z dnia 2 listopada 2015 r. w sprawie bazy danych obiektów topograficznych oraz mapy zasadniczej</Description>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2022</Copyright>
+    <PackageProjectUrl>https://github.com/isukces/iSukces.Geo</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/isukces/iSukces.Geo</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>map,cartography</PackageTags>
+    <AssemblyVersion>1.0.22305.1</AssemblyVersion>
+    <FileVersion>1.0.22305.1</FileVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSource>false</IncludeSource>
+    <IncludeSymbols>true</IncludeSymbols>
+    <Version>1.0.22305.1</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="MasterMapObjects.Auto.cs">
+      <DependentUpon>SipGeoInfoFinder.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
