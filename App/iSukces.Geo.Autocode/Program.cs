@@ -15,6 +15,7 @@ namespace iSukces.Geo.Autocode
             var gen = new MyAutoCodeGenerator(fn);
             gen.TypeBasedOutputProvider = new CustomCsOutputProvider(sln);
             gen.WithGenerator(new SipGeoInfoGenerator(sln));
+            gen.WithGenerator(new GesutGenerator(sln));
             gen.Make<MasterMapObjects>();
         }
     }

@@ -1,23 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using AngleSharp;
-using AngleSharp.Dom;
-using AngleSharp.Html.Dom;
 using iSukces.Code;
 using iSukces.Code.AutoCode;
-using iSukces.Code.Interfaces;
-using OfficeOpenXml;
 
 namespace iSukces.Geo.Autocode.Generators
 {
-    public class SipGeoInfoGenerator : Code.AutoCode.Generators.SingleClassGenerator
+    public class SipGeoInfoGenerator : BaseGenerator<MasterMapObject>
     {
         public SipGeoInfoGenerator(SlnAssemblyBaseDirectoryProvider sln)
         {
@@ -25,180 +15,37 @@ namespace iSukces.Geo.Autocode.Generators
             _docDir = new DirectoryInfo(_docDir.FullName);
         }
 
-        private static MasterMapObject Make(string name, string objectGeometry, string code, string markGeometry,
-            string cartographicSign)
+        protected override void Fix(Dictionary<TableCellKey, string> values)
         {
-            if (string.IsNullOrWhiteSpace(code))
-                return null;
-            if (name =="Nazwa obiektu bazy danych")
-                return null;
-            return new MasterMapObject(code, name, Parse(objectGeometry), Parse(markGeometry), cartographicSign);
-        }
+            base.Fix(values);
+            var col1 = new Dictionary<string, string>();
+            for (int i = 325; i <= 364; i++)
+                col1[i.ToString(CultureInfo.InvariantCulture) + "."] = "rura ochronna";
 
-        private static MasterMapObject Make(IReadOnlyList<string> strings)
-        {
-            return Make(strings[1], strings[2], strings[3], strings[4], strings[5]);
-        }
+            col1["127."] = "inna budowla";
+            col1["247."] = "przewód gazowy podwyższonego średniego ciśnienia";
 
-        private static GeometryKind Parse(string t)
-        {
-            return t switch
+            var keys = values.Keys.Where(a => a.Col == 0).ToArray();
+            foreach (var key in keys)
             {
-                "punkt" => GeometryKind.Point,
-                "powierzchnia" => GeometryKind.Area,
-                "multipowierzchnia" => GeometryKind.MultiArea,
-                "linia" => GeometryKind.Line,
-                "tekst" => GeometryKind.Text,
-                "brak" => GeometryKind.None,
-                _ => throw new NotImplementedException()
-            };
-        }
-
-        private static async Task<Dictionary<TableCellKey, string>> ParseHtmlTable(string html)
-        {
-            var       config  = Configuration.Default;
-            using var context = BrowsingContext.New(config);
-            using var doc     = await context.OpenAsync(req => req.Content(html));
-            Console.WriteLine(doc.Title);
-            Console.WriteLine(doc.Body.InnerHtml.Trim());
-            Console.WriteLine(doc.FirstChild.NodeName.ToLower());
-            Console.WriteLine(doc.LastChild.NodeName.ToLower());
-            var table = doc.QuerySelectorAll("table").First();
-            var rows  = table.QuerySelectorAll("tr").ToArray();
-            
-            Dictionary<TableCellKey, string> values    = new();
-
-            
-            for (var rowIdx = 0; rowIdx < rows.Length; rowIdx++)
-            {
-                var row   = rows[rowIdx];
-                var cells = row.QuerySelectorAll("td").Cast<IHtmlTableDataCellElement>().ToArray();
-
-                int columnIdx = 0;
-                for (int i = 0; i < cells.Length; i++)
+                var v = values[key];
+                if (col1.TryGetValue(v, out var text))
                 {
-                   
-                    var cell  = cells[i];
-                    var value = GetCellValue(cell);
-
-                   
-                    
-                    var rs = cell.RowSpan;
-                    var cs = cell.ColumnSpan;
-                    if (cs > 1)
-                    {
-                        throw new NotImplementedException();
-                    }
-
-                    for (int ii = 0; ii < rs; ii++)
-                    {
-                        var key = new TableCellKey(rowIdx + ii, columnIdx);
-                        if (ii == 0)
-                        {
-                            while (true)
-                            {
-                                if (!values.ContainsKey(key))
-                                    break;
-                                key = new TableCellKey(rowIdx + ii, ++columnIdx);
-                            }
-                        }
-
-                        values.Add(key, value ?? "");
-                    }
-
-                    columnIdx++;
-                }
-            }
-
-            {
-
-                Dictionary<string, string> col1                                                       = new Dictionary<string, string>();
-                for (int i = 325; i <= 364; i++) 
-                    col1[i.ToString(CultureInfo.InvariantCulture) + "."] = "rura ochronna";
-
-                col1["127."] = "inna budowla";
-                col1["247."] = "przewód gazowy podwyższonego średniego ciśnienia";
-                
-                var keys = values.Keys.Where(a => a.Col == 0).ToArray();
-                foreach (var key in keys)
-                {
-                    var v = values[key];
-                    if (col1.TryGetValue(v, out var text))
-                    {
-                        var key2 = key.WithColumn(1);
-                        values[key2] = text;
-                    }
-                    if (v is "36." or "37.")
-                    {
-                        var key2 = key.WithColumn(5);
-                        values[key2] = "podpora związana z budynkiem";
-                    }
-                    
-                    if (v is "24." or "23.")
-                    {
-                        var key2 = key.WithColumn(5);
-                        values[key2] = "budynek projektowany";
-                    }
-                }
-                
-
-            }
-
-            string GetCellValue(IHtmlTableDataCellElement cell)
-            {
-                var sb = new StringBuilder();
-
-                void Scan(INode el)
-                {
-                    sb.Append(" ");
-                    if (el is IText tn)
-                    {
-                        sb.Append(tn.Text);
-                        return;
-                    }
-
-                    if (el is IElement element)
-                    {
-                        Scan2(element.ChildNodes);
-                        return;
-                    }
-
-                    throw new NotImplementedException();
+                    var key2 = key.WithColumn(1);
+                    values[key2] = text;
                 }
 
-                void Scan2(INodeList el)
+                if (v is "36." or "37.")
                 {
-                    foreach (var i in el)
-                    {
-                        Scan(i);
-                    }
+                    var key2 = key.WithColumn(5);
+                    values[key2] = "podpora związana z budynkiem";
                 }
 
-                Scan2(cell.ChildNodes);
-                var a = sb.ToString().Replace("\n", " ").Trim();
-                a = MoreSpacesRegex.Replace(a, m =>
+                if (v is "24." or "23.")
                 {
-                    return " ";
-                });
-                if (a=="")
-                    Debug.WriteLine("");
-                return a;
-            }
-
-            return values;
-        }
-        
-        const string MoreSpacesFilter = @"[\s]{2,}";
-        static Regex MoreSpacesRegex = new Regex(MoreSpacesFilter, RegexOptions.Compiled);
-        
-        private static void WriteList(CsCodeWriter code, IReadOnlyList<string> list)
-        {
-            for (var index = 0; index < list.Count; index++)
-            {
-                var i = list[index];
-                if (index < list.Count - 1)
-                    i += ",";
-                code.WriteLine(i);
+                    var key2 = key.WithColumn(5);
+                    values[key2] = "budynek projektowany";
+                }
             }
         }
 
@@ -208,47 +55,12 @@ namespace iSukces.Geo.Autocode.Generators
             MyGenerateInternal();
         }
 
-        private async Task<List<MasterMapObject>> GetListFromFile()
-        {
-            var fi = new FileInfo(Path.Combine(_docDir.FullName, "WykazObiektówStanowiącychTreśćMapyZasadniczej.html"));
-            if (!fi.Exists)
-                throw new FileNotFoundException("File not found", fi.FullName);
-            var result = new List<MasterMapObject>();
-            var html   = File.ReadAllText(fi.FullName);
-            var values = await ParseHtmlTable(html);
-
-            var keysByRow = values.Keys.GroupBy(a => a.Row).OrderBy(a => a.Key).ToArray();
-            foreach (var i in keysByRow)
-            {
-                var maxCol = i.Select(a => a.Col).Max();
-                var l      = new string[maxCol + 1];
-                for (int col = 0; col <= maxCol; col++)
-                {
-                    var key = new TableCellKey(i.Key, col);
-                    if (values.TryGetValue(key, out var value))
-                        l[col] = value;
-                }
-
-                var so = Make(l);
-
-                if (so is null)
-                    continue;
-                result.Add(so);
-            }
-
-            return result;
-        }
-
         private void MyGenerateInternal()
         {
-            var list = GetListFromFile().GetAwaiter().GetResult();
+            var t = Path.Combine(_docDir.FullName, "WykazObiektówStanowiącychTreśćMapyZasadniczej.html");
+            var list = GetListFromFile(t, ParseMasterMapObject).GetAwaiter().GetResult();
 
-            var sb = new CsCodeWriter();
-
-            sb.WriteLine("return new []");
-            sb.WriteLine("{");
-            sb.IncIndent();
-
+            /*
             var names = list.Select(a => a.CartographicSign)
                 .Where(a => a is not null)
                 .Distinct()
@@ -265,28 +77,40 @@ namespace iSukces.Geo.Autocode.Generators
                     .WithVisibility(Visibilities.Private)
                     .WithBody(code);
             }
+            */
+            /*var body = new CsCodeWriter();
+            body.WriteLine("return new []");
+            body.WriteLine("{");
+            body.IncIndent();
 
-            WriteList(sb, list.Select(o =>
+            WriteList(body, list.Select(o =>
             {
-                var ll = new CsArgumentsBuilder();
-                ll.AddValue(o.Code)
-                    .AddValue(o.Name)
-                    .AddCode(nameof(GeometryKind) + "." + o.ObjectGeometry)
-                    .AddCode(nameof(GeometryKind) + "." + o.MarkGeometry)
-                    .AddValue(o.CartographicSign);
-
-                var code = ll.CallMethod("new " + nameof(MasterMapObject), false);
-                return code;
+               
             }).ToArray());
 
-            sb.DecIndent();
-            sb.WriteLine("};");
+            body.DecIndent();
+            body.WriteLine("};");*/
+            var body = Make1(list, Construct);
 
-            var m = Class.AddMethod("GetKnownCodes", $"System.Collections.Generic.IReadOnlyList<{nameof(MasterMapObject)}>")
-                .WithStatic()
-                .WithVisibility(Visibilities.Private)
-                .WithBody(sb);
-            m.AddComment("Sporządzone na podstawie https://www.prawo.pl/akty/dz-u-2015-2028,18246588.html");
+            AddGetKnownCodesMethod(body, "Sporządzone na podstawie https://www.prawo.pl/akty/dz-u-2015-2028,18246588.html");
+        }
+
+        private static string Construct(MasterMapObject o)
+        {
+            var ll = new CsArgumentsBuilder();
+            ll.AddValue(o.Code)
+                .AddValue(o.Name)
+                .AddCode(nameof(GeometryKind) + "." + o.ObjectGeometry)
+                .AddCode(nameof(GeometryKind) + "." + o.MarkGeometry)
+                .AddValue(o.CartographicSign);
+
+            var code = ll.CallMethod("new " + nameof(MasterMapObject), false);
+            return code;
+        }
+
+        private static MasterMapObject ParseMasterMapObject(string[] l)
+        {
+            return Make(l[1], l[2], l[3], l[4], l[5]);
         }
 
         #region Fields
@@ -294,7 +118,5 @@ namespace iSukces.Geo.Autocode.Generators
         private readonly DirectoryInfo _docDir;
 
         #endregion
-
-        
     }
 }

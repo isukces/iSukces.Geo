@@ -18,7 +18,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="MasterMapObjects.Auto.cs">
-      <DependentUpon>SipGeoInfoFinder.cs</DependentUpon>
+      <DependentUpon>MasterMapObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Update="GesutObjects.Auto.cs">
+      <DependentUpon>GesutObjects.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
