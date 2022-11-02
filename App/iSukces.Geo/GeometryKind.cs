@@ -1,4 +1,4 @@
-﻿namespace iSukces.Geo
+namespace iSukces.Geo
 {
     public enum GeometryKind
     {

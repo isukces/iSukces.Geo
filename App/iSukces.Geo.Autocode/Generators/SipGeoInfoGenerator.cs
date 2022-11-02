@@ -51,7 +51,7 @@ namespace iSukces.Geo.Autocode.Generators
 
         protected override void GenerateInternal()
         {
-            if (Type != typeof(MasterMapObjects)) return;
+            if (Type != typeof(MasterMapObject)) return;
             MyGenerateInternal();
         }
 

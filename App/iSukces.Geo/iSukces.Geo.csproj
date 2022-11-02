@@ -9,19 +9,11 @@
     <RepositoryUrl>https://github.com/isukces/iSukces.Geo</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>map,cartography</PackageTags>
-    <AssemblyVersion>1.0.22305.1</AssemblyVersion>
-    <FileVersion>1.0.22305.1</FileVersion>
+    <AssemblyVersion>1.0.22306.2</AssemblyVersion>
+    <FileVersion>1.0.22306.2</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSource>false</IncludeSource>
     <IncludeSymbols>true</IncludeSymbols>
-    <Version>1.0.22305.1</Version>
+    <Version>1.0.22306.2</Version>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Update="MasterMapObjects.Auto.cs">
-      <DependentUpon>MasterMapObjects.cs</DependentUpon>
-    </Compile>
-    <Compile Update="GesutObjects.Auto.cs">
-      <DependentUpon>GesutObjects.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>

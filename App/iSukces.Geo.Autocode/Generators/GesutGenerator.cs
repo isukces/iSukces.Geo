@@ -19,7 +19,7 @@ namespace iSukces.Geo.Autocode.Generators
       
         protected override void GenerateInternal()
         {
-            if (Type != typeof(GesutObjects)) return;
+            if (Type != typeof(GesutObject)) return;
             MyGenerateInternal();
         }
 
