@@ -1,0 +1,65 @@
+# from https://sip.lex.pl/akty-prawne/dzu-dziennik-ustaw/baza-danych-obiektow-topograficznych-oraz-mapa-zasadnicza-19135412
+
+
+	Sieć wodociągowa				
+1	Przewód wodociągowy	SUWP	+	+	
+2	Wodociągowe urządzenie techniczne	suwu	+		
+3	Zasuwa lub zawór	suww	+		
+4	Hydrofornia	SUWR	+	+	+
+5	Hydrant	SUWH	+	+	+
+6	Zdrój uliczny	SUWD	+		
+7	Studnia zwykła	suws	+		
+8	Studnia głębinowa	SU WG	+		
+Sieć kanalizacyjna				
+9	Przewód kanalizacyjny	SUKP	+	+	
+10	Kanalizacyjne urządzenie techniczne	SUKU	+		
+11	Zasuwa lub zawór	SUKW	+		
+12	Studnia kanalizacyjna	SUKS	+		
+13	Kratka ściekowa	SUKK	+		
+14	Odwodnienie liniowe	SUKL	+		
+15	Osadnik, szambo	SUKM	+	+	
+16	Przydomowa oczyszczalnia ścieków	SUKD	+		
+17	Wylot kanału	SUKE	+		
+18	Przepompownia	SUKN	+	+	+
+Sieć elektroenergetyczna				
+19	Przewód elektroenergetyczny	SUEP	+	+	
+20	Elektroenergetyczne urządzenie techniczne	SUEU	+		
+21	Szafa elektroenergetyczna lub kontener	SUES	+		
+22	Stacja transformatorowa	SUET	+		
+23	Latarnia	SUEO	+		
+24	Maszt oświetleniowy	SUEM	+	+	
+25	Turbina wiatrowa	SUEA	+	+	+
+26	Stacja ładowania pojazdów elektrycznych	SUEL	+		
+Sieć gazowa				
+27	Przewód gazowy	SUGP	+	+	
+28	Gazowe urządzenie techniczne	SUGU	+		
+29	Zasuwa lub zawór	SUGW	+		
+30	Szafa gazowa lub kontener	SUGS	+		
+31	Stacja gazowa	SUGN	+	+	+
+32	Zbiornik gazu	SUGV	+		
+Sieć ciepłownicza				
+33	Przewód ciepłowniczy	SUCP	+	+	
+34	Ciepłownicze urządzenie techniczne	SUCU	+		
+35	Zasuwa lub zawór	SUCW	+		
+Sieć telekomunikacyjna				
+36	Przewód telekomunikacyjny	SUTP	+	+	
+37	Telekomunikacyjne urządzenie techniczne	SUTU	+		
+38	Szafa telekomunikacyjna lub kontener	SUTS	+		
+39	Wieża telekomunikacyjna	SUTW	+	+	+
+40	Słupek telekomunikacyjny	SUTK	+		
+Sieć specjalna				
+41	Przewód specjalny	SUSP	+		
+42	Urządzenie techniczne sieci specjalnej	SUSU	+		
+Sieć niezidentyfikowana				
+43	Przewód niezidentyfikowany	SUNP	+		
+44	Urządzenie techniczne sieci niezidentyfikowanej	SUNU	+		
+Urządzenia towarzyszące liniowe				
+45	Kanał technologiczny	SULL	+	+	
+46	Obudowa ochronna przewodu	SULO	+		
+Inne urządzenia towarzyszące				
+47	Komora podziemna	SUPK	+		
+48	Właz do komory lub kanału	SUPW	+		
+49	Słup przewodów napowietrznych	SUPP	+		
+50	Słup trakcyjny	SUPY	+		
+51	Podpora przewodów	SUPN	+		
+52	Budowla podziemna	SUPB	+		

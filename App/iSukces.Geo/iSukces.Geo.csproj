@@ -9,11 +9,11 @@
     <RepositoryUrl>https://github.com/isukces/iSukces.Geo</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>map,cartography</PackageTags>
-    <AssemblyVersion>1.0.22306.2</AssemblyVersion>
-    <FileVersion>1.0.22306.2</FileVersion>
+    <AssemblyVersion>1.0.22318.4</AssemblyVersion>
+    <FileVersion>1.0.22318.4</FileVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSource>false</IncludeSource>
     <IncludeSymbols>true</IncludeSymbols>
-    <Version>1.0.22306.2</Version>
+    <Version>1.0.22318.4</Version>
   </PropertyGroup>
 </Project>
