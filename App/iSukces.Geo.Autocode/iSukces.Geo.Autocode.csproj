@@ -1,17 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net48</TargetFramework>
-        <LangVersion>9</LangVersion>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="AngleSharp" Version="0.17.1" />
-        <PackageReference Include="iSukces.Code" Version="1.0.22175.186" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="EPPlus" Version="4.5.3.3" />
-        <ProjectReference Include="..\iSukces.Geo\iSukces.Geo.csproj" />
-    </ItemGroup>
-
+  <PropertyGroup>
+    <ProjectGuid>{3EF2EA84-F814-47A1-AC82-B0395DD5F264}</ProjectGuid>
+    <TargetFrameworks>net4.8;net7.0</TargetFrameworks>
+    <LangVersion>9</LangVersion>
+    <OutputType>Exe</OutputType>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>c:\programs\narzedzia\sign\iSukcesCodeSign.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iSukces.Geo\iSukces.Geo.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.17.1" />
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    <PackageReference Include="iSukces.Code" Version="1.0.23081.198" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
 </Project>

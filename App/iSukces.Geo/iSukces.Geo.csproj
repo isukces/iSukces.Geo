@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <Title>Geo information</Title>
-    <Description>Dane z rozporządzenia ministra administracji i cyfryzacji z dnia 2 listopada 2015 r. w sprawie bazy danych obiektów topograficznych oraz mapy zasadniczej</Description>
-    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2022-2022</Copyright>
-    <PackageProjectUrl>https://github.com/isukces/iSukces.Geo</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/isukces/iSukces.Geo</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>map,cartography</PackageTags>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2022-2023</Copyright>
+    <ProjectGuid>{DF617121-1251-459D-B9B2-C2D5A2322718}</ProjectGuid>
+    <TargetFrameworks>net4.8;net7.0</TargetFrameworks>
     <AssemblyVersion>1.0.22348.5</AssemblyVersion>
     <FileVersion>1.0.22348.5</FileVersion>
+    <Version>1.0.22348.5</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>c:\programs\narzedzia\sign\iSukcesCodeSign.snk</AssemblyOriginatorKeyFile>
+    <Description>Dane z rozporządzenia ministra administracji i cyfryzacji z dnia 2 listopada 2015 r. w sprawie bazy danych obiektów topograficznych oraz mapy zasadniczej</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSource>false</IncludeSource>
     <IncludeSymbols>true</IncludeSymbols>
-    <Version>1.0.22348.5</Version>
+    <PackageProjectUrl>https://github.com/isukces/iSukces.Geo</PackageProjectUrl>
+    <PackageTags>map,cartography</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/isukces/iSukces.Geo</RepositoryUrl>
+    <Title>Geo information</Title>
   </PropertyGroup>
 </Project>

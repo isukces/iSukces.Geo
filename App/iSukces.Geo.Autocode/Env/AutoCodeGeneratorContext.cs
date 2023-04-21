@@ -1,7 +1,6 @@
 ﻿using System;
 using iSukces.Code;
 using iSukces.Code.AutoCode;
-using iSukces.Code.CodeWrite;
 
 namespace iSukces.Geo.Autocode.Env
 {
