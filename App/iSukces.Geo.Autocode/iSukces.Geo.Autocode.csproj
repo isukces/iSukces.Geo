@@ -12,9 +12,10 @@
     <ProjectReference Include="..\iSukces.Geo\iSukces.Geo.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.17.1" />
+    <PackageReference Include="AngleSharp" Version="1.0.1" />
     <PackageReference Include="EPPlus" Version="4.5.3.3" />
-    <PackageReference Include="iSukces.Code" Version="1.0.23081.198" />
+    <PackageReference Include="iSukces.Code" Version="1.0.23111.199" />
+    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>
