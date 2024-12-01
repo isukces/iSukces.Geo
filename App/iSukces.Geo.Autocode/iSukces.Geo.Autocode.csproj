@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023-2024</Copyright>
     <ProjectGuid>{3EF2EA84-F814-47A1-AC82-B0395DD5F264}</ProjectGuid>
-    <TargetFrameworks>net4.8;net7.0</TargetFrameworks>
-    <LangVersion>9</LangVersion>
+    <TargetFrameworks>net4.8;net8.0;net9.0</TargetFrameworks>
+    <LangVersion>13</LangVersion>
     <OutputType>Exe</OutputType>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>c:\programs\narzedzia\sign\iSukcesCodeSign.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>$(SignKey)</AssemblyOriginatorKeyFile>
+    <Authors>Internet Sukces Piotr Stęclik</Authors>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\iSukces.Geo\iSukces.Geo.csproj" />

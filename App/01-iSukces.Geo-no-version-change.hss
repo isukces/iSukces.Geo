@@ -1,0 +1,34 @@
+// using System.IO;
+var builder = new ProjectBuilder()
+{
+    VisualStudioExe = GlobalVar["MsBuild 2022"],
+    Nuget =
+    {
+        Exe           = GlobalVar["Nuget"],
+        RepositoryDir = GlobalVar["Private Nuget Repository"],
+	    ForceNugetName = "iSukces.Geo"
+    },
+
+    SolutionName = "iSukces.Geo",
+    ProjectName  = "iSukces.Geo",
+    SolutionDir  = ConfigDir
+//    ProjectDirTemplate = "{SolutionDir}\\app\\{ProjectName}"
+};
+WorkingDir = builder.SolutionDir;
+
+builder.DeleteBinObj();
+builder.Nuget.Restore();
+var version = builder.UpdateVersionCore(VersionNumberStyles.DoNotChange);
+builder.MsBuild();
+
+
+foreach (var options in new[] { PackageNameOptions.Normal, PackageNameOptions.SNupkg })
+{
+	var srcNupkg      = builder.Nuget.GetNugetPackageShortFile(version, options);
+	var nugetCopyFrom = CombinePath(builder.Nuget.CompiledNugetOutputDir, srcNupkg);
+	var nugetCopyTo   = CombinePath(builder.Nuget.RepositoryDir, srcNupkg);
+	Console.WriteLine("Copy {0} to {1}", srcNupkg, nugetCopyTo);
+	File.Copy(nugetCopyFrom, nugetCopyTo, true);
+}
+
+Console.WriteLine("--FINISHED--");
