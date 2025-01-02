@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023-2024</Copyright>
+    <Company>Internet Sukces Piotr Stęclik</Company>
+    <Copyright>Copyright © Internet Sukces Piotr Stęclik 2023-2025</Copyright>
     <ProjectGuid>{3EF2EA84-F814-47A1-AC82-B0395DD5F264}</ProjectGuid>
-    <TargetFrameworks>net4.8;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <LangVersion>13</LangVersion>
     <OutputType>Exe</OutputType>
     <SignAssembly>true</SignAssembly>
