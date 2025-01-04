@@ -58,7 +58,7 @@ namespace iSukces.Geo.Autocode.Generators
 
         protected void AddGetKnownCodesMethod(CsCodeWriter sb, string source)
         {
-            var m = Class.AddMethod("GetKnownCodes", $"System.Collections.Generic.IReadOnlyList<{typeof(TElement).Name}>")
+            var m = Class.AddMethod("GetKnownCodes", (CsType)$"System.Collections.Generic.IReadOnlyList<{typeof(TElement).Name}>")
                 .WithStatic()
                 .WithVisibility(Visibilities.Private)
                 .WithBody(sb);

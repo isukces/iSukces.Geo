@@ -1,17 +1,16 @@
-﻿namespace iSukces.Geo
+﻿namespace iSukces.Geo;
+
+public enum GeoPointClassification
 {
-    public enum GeoPointClassification
-    {
-        Unknown,
-        Pipeline,
-        Electric,
-        Water,
-        // Kanalizacja - uzupełnić deszczowa/sanitarna
-        Sewers,
-        Telecommunication,
-        Gas,
-        Gasoline,
-        Oil,
-        Other
-    }
+    Unknown,
+    Pipeline,
+    Electric,
+    Water,
+    // Kanalizacja - uzupełnić deszczowa/sanitarna
+    Sewers,
+    Telecommunication,
+    Gas,
+    Gasoline,
+    Oil,
+    Other
 }
