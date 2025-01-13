@@ -1,12 +1,11 @@
-namespace iSukces.Geo
+namespace iSukces.Geo;
+
+public enum GeometryKind
 {
-    public enum GeometryKind
-    {
-        Point,
-        Area,
-        Line,
-        MultiArea,
-        Text,
-        None
-    }
+    Point,
+    Area,
+    Line,
+    MultiArea,
+    Text,
+    None
 }

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using iSukces.Code;
 using iSukces.Code.AutoCode;
 
@@ -41,7 +41,7 @@ public class GesutGenerator : BaseGenerator<GesutObject>
         return code;
     }
 
-    private static GesutObject ParseGesutObject(string[] l)
+    private static GesutObject? ParseGesutObject(string[] l)
     {
         if (l[1] == "POZIOM 1" || l[1] == "KOD")
             return null;
@@ -49,9 +49,5 @@ public class GesutGenerator : BaseGenerator<GesutObject>
         // return Make(l[1], l[2], l[3], l[4], l[5]);
     }
 
-    #region Fields
-
     private readonly DirectoryInfo _docDir;
-
-    #endregion
 }

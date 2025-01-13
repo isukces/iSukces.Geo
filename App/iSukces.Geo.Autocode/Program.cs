@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using iSukces.Code;
 using iSukces.Code.AutoCode;
@@ -21,6 +21,7 @@ internal class Program
             if (!string.IsNullOrEmpty(b.File.SuggestedFileName))
                 Console.WriteLine("Creating file " + Path.GetFileName(b.File.SuggestedFileName));
             b.File.FileScopeNamespace = FileScopeNamespaceConfiguration.AssumeDefined("iSukces.Geo");
+            b.File.Nullable           = FileNullableOption.GlobalEnabled;
         };
         
         gen.TypeBasedOutputProvider = new CustomCsOutputProvider(sln);
